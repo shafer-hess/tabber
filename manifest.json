@@ -1,0 +1,34 @@
+{
+    "name": "Tabber",
+    "description": "A Chrome Extension that adds additional keyboard shortcuts to Chrome",
+    "version": "1.0",
+    "manifest_version": 3,
+    "background": {
+        "service_worker": "background.js"
+    },
+    "permissions": [
+        "activeTab",
+        "scripting"
+    ],
+    "commands": {
+        "move-tab-left": {
+            "suggested_key": "Ctrl+Shift+Left",
+            "description": "Move active tab to the left one tab"
+        },
+        "move-tab-right": {
+            "suggested_key": "Ctrl+Shift+Right",
+            "description": "Move active tab to the right one tab"
+        },
+        "move-tab-to-front": {
+            "suggested_key": "Ctrl+Shift+Home",
+            "description": "Move active tab to the front of the tab list"
+        },
+        "move-tab-to-back": {
+            "description": "Move active tab to the back of the tab list"
+        }, 
+        "pop-out-tab": {
+            "suggested_key": "Ctrl+Shift+Down",
+            "description": "Pop active tab out of current window into a new window"
+        }
+    }
+}
