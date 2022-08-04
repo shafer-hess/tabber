@@ -1,7 +1,7 @@
 // Returns all browser tabs and the currently active tab in the browser
 async function getBrowserTabs() {
     // chrome.tabs api to query browser tabs
-    let tabs = await chrome.tabs.query({})
+    let tabs = await chrome.tabs.query({lastFocusedWindow: true})
     let [activeTab] = tabs.filter(tab => tab.active === true)
 
     return [tabs, activeTab]
@@ -54,9 +54,15 @@ async function popOutTab(tabs, activeTab) {
     await chrome.tabs.remove(activeTab.id)
 }
 
-// TODO(Shafer): Try to reattach a tab to the first browser instance
 async function reattachTab(tabs, activeTab) {
+    // Retrieve the url of the currently active tab
+    let currentTabUrl = activeTab.url
     
+    // Add a new tab to the prime browser window
+    await chrome.tabs.create({active: true, url: currentTabUrl, windowId: 1})
+
+    // Remove the current active tab from the current tab list
+    await chrome.tabs.remove(activeTab.id)
 }
 
 // ENTRY: Function is passed a command by background.js, parse the command and call the appropriate handler function
