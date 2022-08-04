@@ -30,6 +30,9 @@
         "pop-out-tab": {
             "suggested_key": "Alt+Shift+Down",
             "description": "Pop active tab out of current window into a new window"
+        },
+        "reattach-tab": {
+            "description": "Attach currently focused tab to the last focused Chrome browser window"
         }
     }
 }
