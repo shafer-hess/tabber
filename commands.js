@@ -44,7 +44,14 @@ async function moveTabToBack(tabs, activeTab) {
 }
 
 async function popOutTab(tabs, activeTab) {
+    // Retrieve the url of the currently active tab
+    let currentTabUrl = activeTab.url
 
+    // Remove the current active tab from the current tab list
+    await chrome.tabs.remove(activeTab.id)
+    
+    // Create a new window with the chrome.windows api and use the retrieved url as the tab data
+    await chrome.windows.create({url: currentTabUrl})
 }
 
 // ENTRY: Function is passed a command by background.js, parse the command and call the appropriate handler function
