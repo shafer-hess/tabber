@@ -1,3 +1,5 @@
+import handleCommand from "./commands.js"
+
 chrome.commands.onCommand.addListener((command) => {
-    console.log(`Command "${command}" triggered`);
+    handleCommand(command)
 });
