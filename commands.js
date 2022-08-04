@@ -7,23 +7,43 @@ async function getBrowserTabs() {
     return [tabs, activeTab]
 }
 
-function moveTabLeft(tabs, activeTab) {
+async function moveTabLeft(tabs, activeTab) {
+    // Get the tab index of the current active tab
+    let tabIndex = activeTab.index
 
+    // Do nothing if tab is at the front of the list
+    if(tabIndex === 0)
+        return
+
+    // Use chrome.tabs api to move the active tab to the left one tab
+    let newIndex = tabIndex - 1
+    await chrome.tabs.move(activeTab.id, {index: newIndex})
 }
 
-function moveTabRight(tabs, activeTab) {
+async function moveTabRight(tabs, activeTab) {
+    // Get the tab index of the current active tab
+    let tabIndex = activeTab.index
 
+    // Do nothing if the tab is at the end of the list
+    if(tabIndex - 1 === tabs.length)
+        return
+
+    // Use chrome.tabs api to move the active tab to the right one tab
+    let newIndex = tabIndex + 1
+    await chrome.tabs.move(activeTab.id, {index: newIndex})
 }
 
-function moveTabToFront(tabs, activeTab) {
-
+async function moveTabToFront(tabs, activeTab) {
+    // Use the chrome.tabs api to move the active tab to the front of the tab list
+    await chrome.tabs.move(activeTab.id, {index: 0})
 }
 
-function moveTabToBack(tabs, activeTab) {
-
+async function moveTabToBack(tabs, activeTab) {
+    // Use the chrome.tabs api to move the active tab to the back of the tab list
+    await chrome.tabs.move(activeTab.id, {index: tabs.length - 1})
 }
 
-function popOutTab(tabs, activeTab) {
+async function popOutTab(tabs, activeTab) {
 
 }
 
