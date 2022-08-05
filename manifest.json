@@ -1,6 +1,6 @@
 {
     "name": "Tabber",
-    "description": "A Chrome Extension that adds additional keyboard shortcuts to Chrome",
+    "description": "Expand and enhance your tab management with additional keybindings and functionality.",
     "version": "1.0",
     "manifest_version": 3,
     "icons": {
@@ -35,10 +35,10 @@
         }, 
         "pop-out-tab": {
             "suggested_key": "Alt+Shift+Down",
-            "description": "Pop active tab out of current window into a new window"
+            "description": "Pop active tab out into a new window"
         },
         "reattach-tab": {
-            "description": "Attach currently focused tab to the last focused Chrome browser window"
+            "description": "Attach active tab to the prime Chrome window"
         }
     }
 }
