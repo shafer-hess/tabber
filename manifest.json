@@ -27,7 +27,7 @@
             "description": "Move active tab to the right one tab"
         },
         "move-tab-to-front": {
-            "suggested_key": "Alt+Shift+Home",
+            "suggested_key": "",
             "description": "Move active tab to the front of the tab list"
         },
         "move-tab-to-back": {
@@ -38,6 +38,7 @@
             "description": "Pop active tab out into a new window"
         },
         "reattach-tab": {
+            "suggested_key": "Alt+Shift+Up",
             "description": "Attach active tab to the prime Chrome window"
         }
     }
