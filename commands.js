@@ -57,9 +57,16 @@ async function popOutTab(tabs, activeTab) {
 async function reattachTab(tabs, activeTab) {
     // Retrieve the url of the currently active tab
     let currentTabUrl = activeTab.url
-    
+    let windowId = 1;
+
+    // Check list of available Chrome windows
+    let [window] = await chrome.windows.getAll({populate: true})  
+    if(window.id !== 1) {
+        windowId = window.id
+    }
+
     // Add a new tab to the prime browser window
-    await chrome.tabs.create({active: true, url: currentTabUrl, windowId: 1})
+    await chrome.tabs.create({active: true, url: currentTabUrl, windowId: windowId})
 
     // Remove the current active tab from the current tab list
     await chrome.tabs.remove(activeTab.id)
