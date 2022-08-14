@@ -47,11 +47,8 @@ async function popOutTab(tabs, activeTab) {
     // Retrieve the url of the currently active tab
     let currentTabUrl = activeTab.url
 
-    // Create a new window with the chrome.windows api and use the retrieved url as the tab data
-    await chrome.windows.create({url: currentTabUrl, focused: true})
-
-    // Remove the current active tab from the current tab list
-    await chrome.tabs.remove(activeTab.id)
+    // Create a new window with the chrome.windows api and use the activeTab id to populate the window
+    await chrome.windows.create({tabId: activeTab.id, focused: true, state: "maximized"})
 }
 
 async function reattachTab(tabs, activeTab) {
@@ -66,10 +63,10 @@ async function reattachTab(tabs, activeTab) {
     }
 
     // Add a new tab to the prime browser window
-    await chrome.tabs.create({active: true, url: currentTabUrl, windowId: windowId})
+    await chrome.tabs.move(activeTab.id, {index: -1, windowId: windowId})
 
-    // Remove the current active tab from the current tab list
-    await chrome.tabs.remove(activeTab.id)
+    // Update the newly moved tab to be active
+    await chrome.tabs.update(activeTab.id, {active: true})
 }
 
 // ENTRY: Function is passed a command by background.js, parse the command and call the appropriate handler function

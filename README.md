@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="icons/Tabber_BG_Wide.png">
+</p>
+
 # Tabber
 A Chrome extension to expand and enhance your tab management with additional keybindings and functionality.
 
